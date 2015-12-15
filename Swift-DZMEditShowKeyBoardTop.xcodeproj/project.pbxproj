@@ -1,0 +1,517 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F85F87961C1A73D3007A34A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F87951C1A73D3007A34A4 /* AppDelegate.swift */; };
+		F85F87981C1A73D3007A34A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F87971C1A73D3007A34A4 /* ViewController.swift */; };
+		F85F879B1C1A73D3007A34A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F85F87991C1A73D3007A34A4 /* Main.storyboard */; };
+		F85F879D1C1A73D3007A34A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F85F879C1C1A73D3007A34A4 /* Assets.xcassets */; };
+		F85F87A01C1A73D3007A34A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F85F879E1C1A73D3007A34A4 /* LaunchScreen.storyboard */; };
+		F85F87AB1C1A73D3007A34A4 /* Swift_DZMEditShowKeyBoardTopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F87AA1C1A73D3007A34A4 /* Swift_DZMEditShowKeyBoardTopTests.swift */; };
+		F85F87B61C1A73D3007A34A4 /* Swift_DZMEditShowKeyBoardTopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F87B51C1A73D3007A34A4 /* Swift_DZMEditShowKeyBoardTopUITests.swift */; };
+		F85F87C51C1A7573007A34A4 /* DZMEditShowKeyBoardTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F87C41C1A7573007A34A4 /* DZMEditShowKeyBoardTop.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F85F87A71C1A73D3007A34A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F85F878A1C1A73D3007A34A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F85F87911C1A73D3007A34A4;
+			remoteInfo = "Swift-DZMEditShowKeyBoardTop";
+		};
+		F85F87B21C1A73D3007A34A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F85F878A1C1A73D3007A34A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F85F87911C1A73D3007A34A4;
+			remoteInfo = "Swift-DZMEditShowKeyBoardTop";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F85F87921C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-DZMEditShowKeyBoardTop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F85F87951C1A73D3007A34A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F85F87971C1A73D3007A34A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F85F879A1C1A73D3007A34A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F85F879C1C1A73D3007A34A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F85F879F1C1A73D3007A34A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F85F87A11C1A73D3007A34A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F85F87A61C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swift-DZMEditShowKeyBoardTopTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F85F87AA1C1A73D3007A34A4 /* Swift_DZMEditShowKeyBoardTopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_DZMEditShowKeyBoardTopTests.swift; sourceTree = "<group>"; };
+		F85F87AC1C1A73D3007A34A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F85F87B11C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swift-DZMEditShowKeyBoardTopUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F85F87B51C1A73D3007A34A4 /* Swift_DZMEditShowKeyBoardTopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_DZMEditShowKeyBoardTopUITests.swift; sourceTree = "<group>"; };
+		F85F87B71C1A73D3007A34A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F85F87C41C1A7573007A34A4 /* DZMEditShowKeyBoardTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZMEditShowKeyBoardTop.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F85F878F1C1A73D3007A34A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F85F87A31C1A73D3007A34A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F85F87AE1C1A73D3007A34A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F85F87891C1A73D3007A34A4 = {
+			isa = PBXGroup;
+			children = (
+				F85F87941C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTop */,
+				F85F87A91C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTopTests */,
+				F85F87B41C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTopUITests */,
+				F85F87931C1A73D3007A34A4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F85F87931C1A73D3007A34A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F85F87921C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTop.app */,
+				F85F87A61C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTopTests.xctest */,
+				F85F87B11C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTopUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F85F87941C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTop */ = {
+			isa = PBXGroup;
+			children = (
+				F85F87C31C1A73F7007A34A4 /* DZMEditShowKeyBoardTop */,
+				F85F87951C1A73D3007A34A4 /* AppDelegate.swift */,
+				F85F87971C1A73D3007A34A4 /* ViewController.swift */,
+				F85F87991C1A73D3007A34A4 /* Main.storyboard */,
+				F85F879C1C1A73D3007A34A4 /* Assets.xcassets */,
+				F85F879E1C1A73D3007A34A4 /* LaunchScreen.storyboard */,
+				F85F87A11C1A73D3007A34A4 /* Info.plist */,
+			);
+			path = "Swift-DZMEditShowKeyBoardTop";
+			sourceTree = "<group>";
+		};
+		F85F87A91C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTopTests */ = {
+			isa = PBXGroup;
+			children = (
+				F85F87AA1C1A73D3007A34A4 /* Swift_DZMEditShowKeyBoardTopTests.swift */,
+				F85F87AC1C1A73D3007A34A4 /* Info.plist */,
+			);
+			path = "Swift-DZMEditShowKeyBoardTopTests";
+			sourceTree = "<group>";
+		};
+		F85F87B41C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTopUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F85F87B51C1A73D3007A34A4 /* Swift_DZMEditShowKeyBoardTopUITests.swift */,
+				F85F87B71C1A73D3007A34A4 /* Info.plist */,
+			);
+			path = "Swift-DZMEditShowKeyBoardTopUITests";
+			sourceTree = "<group>";
+		};
+		F85F87C31C1A73F7007A34A4 /* DZMEditShowKeyBoardTop */ = {
+			isa = PBXGroup;
+			children = (
+				F85F87C41C1A7573007A34A4 /* DZMEditShowKeyBoardTop.swift */,
+			);
+			path = DZMEditShowKeyBoardTop;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F85F87911C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F85F87BA1C1A73D3007A34A4 /* Build configuration list for PBXNativeTarget "Swift-DZMEditShowKeyBoardTop" */;
+			buildPhases = (
+				F85F878E1C1A73D3007A34A4 /* Sources */,
+				F85F878F1C1A73D3007A34A4 /* Frameworks */,
+				F85F87901C1A73D3007A34A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Swift-DZMEditShowKeyBoardTop";
+			productName = "Swift-DZMEditShowKeyBoardTop";
+			productReference = F85F87921C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTop.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F85F87A51C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTopTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F85F87BD1C1A73D3007A34A4 /* Build configuration list for PBXNativeTarget "Swift-DZMEditShowKeyBoardTopTests" */;
+			buildPhases = (
+				F85F87A21C1A73D3007A34A4 /* Sources */,
+				F85F87A31C1A73D3007A34A4 /* Frameworks */,
+				F85F87A41C1A73D3007A34A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F85F87A81C1A73D3007A34A4 /* PBXTargetDependency */,
+			);
+			name = "Swift-DZMEditShowKeyBoardTopTests";
+			productName = "Swift-DZMEditShowKeyBoardTopTests";
+			productReference = F85F87A61C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTopTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F85F87B01C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTopUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F85F87C01C1A73D3007A34A4 /* Build configuration list for PBXNativeTarget "Swift-DZMEditShowKeyBoardTopUITests" */;
+			buildPhases = (
+				F85F87AD1C1A73D3007A34A4 /* Sources */,
+				F85F87AE1C1A73D3007A34A4 /* Frameworks */,
+				F85F87AF1C1A73D3007A34A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F85F87B31C1A73D3007A34A4 /* PBXTargetDependency */,
+			);
+			name = "Swift-DZMEditShowKeyBoardTopUITests";
+			productName = "Swift-DZMEditShowKeyBoardTopUITests";
+			productReference = F85F87B11C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTopUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F85F878A1C1A73D3007A34A4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = DZM;
+				TargetAttributes = {
+					F85F87911C1A73D3007A34A4 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					F85F87A51C1A73D3007A34A4 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = F85F87911C1A73D3007A34A4;
+					};
+					F85F87B01C1A73D3007A34A4 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = F85F87911C1A73D3007A34A4;
+					};
+				};
+			};
+			buildConfigurationList = F85F878D1C1A73D3007A34A4 /* Build configuration list for PBXProject "Swift-DZMEditShowKeyBoardTop" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F85F87891C1A73D3007A34A4;
+			productRefGroup = F85F87931C1A73D3007A34A4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F85F87911C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTop */,
+				F85F87A51C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTopTests */,
+				F85F87B01C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTopUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F85F87901C1A73D3007A34A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F85F87A01C1A73D3007A34A4 /* LaunchScreen.storyboard in Resources */,
+				F85F879D1C1A73D3007A34A4 /* Assets.xcassets in Resources */,
+				F85F879B1C1A73D3007A34A4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F85F87A41C1A73D3007A34A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F85F87AF1C1A73D3007A34A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F85F878E1C1A73D3007A34A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F85F87981C1A73D3007A34A4 /* ViewController.swift in Sources */,
+				F85F87961C1A73D3007A34A4 /* AppDelegate.swift in Sources */,
+				F85F87C51C1A7573007A34A4 /* DZMEditShowKeyBoardTop.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F85F87A21C1A73D3007A34A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F85F87AB1C1A73D3007A34A4 /* Swift_DZMEditShowKeyBoardTopTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F85F87AD1C1A73D3007A34A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F85F87B61C1A73D3007A34A4 /* Swift_DZMEditShowKeyBoardTopUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F85F87A81C1A73D3007A34A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F85F87911C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTop */;
+			targetProxy = F85F87A71C1A73D3007A34A4 /* PBXContainerItemProxy */;
+		};
+		F85F87B31C1A73D3007A34A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F85F87911C1A73D3007A34A4 /* Swift-DZMEditShowKeyBoardTop */;
+			targetProxy = F85F87B21C1A73D3007A34A4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F85F87991C1A73D3007A34A4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F85F879A1C1A73D3007A34A4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F85F879E1C1A73D3007A34A4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F85F879F1C1A73D3007A34A4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F85F87B81C1A73D3007A34A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F85F87B91C1A73D3007A34A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F85F87BB1C1A73D3007A34A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Swift-DZMEditShowKeyBoardTop/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DZM.Swift-DZMEditShowKeyBoardTop";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F85F87BC1C1A73D3007A34A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Swift-DZMEditShowKeyBoardTop/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DZM.Swift-DZMEditShowKeyBoardTop";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F85F87BE1C1A73D3007A34A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Swift-DZMEditShowKeyBoardTopTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DZM.Swift-DZMEditShowKeyBoardTopTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swift-DZMEditShowKeyBoardTop.app/Swift-DZMEditShowKeyBoardTop";
+			};
+			name = Debug;
+		};
+		F85F87BF1C1A73D3007A34A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Swift-DZMEditShowKeyBoardTopTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DZM.Swift-DZMEditShowKeyBoardTopTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swift-DZMEditShowKeyBoardTop.app/Swift-DZMEditShowKeyBoardTop";
+			};
+			name = Release;
+		};
+		F85F87C11C1A73D3007A34A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Swift-DZMEditShowKeyBoardTopUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DZM.Swift-DZMEditShowKeyBoardTopUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Swift-DZMEditShowKeyBoardTop";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		F85F87C21C1A73D3007A34A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Swift-DZMEditShowKeyBoardTopUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DZM.Swift-DZMEditShowKeyBoardTopUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Swift-DZMEditShowKeyBoardTop";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F85F878D1C1A73D3007A34A4 /* Build configuration list for PBXProject "Swift-DZMEditShowKeyBoardTop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F85F87B81C1A73D3007A34A4 /* Debug */,
+				F85F87B91C1A73D3007A34A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F85F87BA1C1A73D3007A34A4 /* Build configuration list for PBXNativeTarget "Swift-DZMEditShowKeyBoardTop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F85F87BB1C1A73D3007A34A4 /* Debug */,
+				F85F87BC1C1A73D3007A34A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F85F87BD1C1A73D3007A34A4 /* Build configuration list for PBXNativeTarget "Swift-DZMEditShowKeyBoardTopTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F85F87BE1C1A73D3007A34A4 /* Debug */,
+				F85F87BF1C1A73D3007A34A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F85F87C01C1A73D3007A34A4 /* Build configuration list for PBXNativeTarget "Swift-DZMEditShowKeyBoardTopUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F85F87C11C1A73D3007A34A4 /* Debug */,
+				F85F87C21C1A73D3007A34A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F85F878A1C1A73D3007A34A4 /* Project object */;
+}
