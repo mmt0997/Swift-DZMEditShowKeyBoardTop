@@ -38,7 +38,7 @@ DZMEditShowKeyBoardTop .keyboardHideWithNotification(notification)
 
 ##代码图片
 
-![CarouselView in action](Code.png)
+![CarouselView in action](Code.jpg)
 ![CarouselView in action](DemoOne.gif)
 
 --------------------------------------------------------------------------------------------------------------
