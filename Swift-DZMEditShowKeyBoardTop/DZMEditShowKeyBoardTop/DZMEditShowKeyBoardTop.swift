@@ -95,8 +95,10 @@ class DZMEditShowKeyBoardTop: NSObject {
     
     // 属性
     var maxY:CGFloat = 0                    // 当前正在编辑的输入框最大Y值 这个最大Y值就是maxYWithView方法初始化之后得到的MaxY 用于在别的界面使用对象获得使用
-    var scrollView:UIScrollView?
     var currentSize:CGSize = CGSizeMake(0, 0)
+    var scrollView:UIScrollView?
+    var isThree:Bool = false                // 是否是第三方键盘
+    var three:Int = 3                       // 第三方键盘需要调用willShow3次
     
     // 方法名称
     let keyboardWillShowNotification:Selector = "keyboardWillShowNotification:"
@@ -204,15 +206,36 @@ class DZMEditShowKeyBoardTop: NSObject {
         
         let keyboardFrame:CGRect = (notification.userInfo![UIKeyboardFrameEndUserInfoKey]?.CGRectValue)!
         
-        let keyboardAnimationDuration = (notification.userInfo![UIKeyboardAnimationDurationUserInfoKey]?.doubleValue)!
+        var keyboardAnimationDuration:Double = (notification.userInfo![UIKeyboardAnimationDurationUserInfoKey]?.doubleValue)!
+        
+        // 检测第三方键盘 假如 键盘高度
+        if Int(keyboardFrame.size.height) <= 0 {
+            editShowKeyBoardTop.three = 0
+            editShowKeyBoardTop.isThree = true
+        }
+        
+        if editShowKeyBoardTop.isThree {
+            editShowKeyBoardTop.three += 1
+            if editShowKeyBoardTop.three != 3 {
+                return
+            }else{
+                editShowKeyBoardTop.isThree = false
+            }
+            
+            keyboardAnimationDuration = 0.25
+        }
+        
         
         let keyboardY:CGFloat = keyboardFrame.origin.y
         
         if maxY > keyboardY {
             
-            if scrollView != editShowKeyBoardTop.scrollView{
+            if scrollView != editShowKeyBoardTop.scrollView || (scrollView == editShowKeyBoardTop.scrollView && Int(scrollView.contentSize.height) != Int(editShowKeyBoardTop.currentSize.height)) {
                 
-                editShowKeyBoardTop.scrollView?.contentSize = editShowKeyBoardTop.currentSize
+                if !((scrollView == editShowKeyBoardTop.scrollView && Int(scrollView.contentSize.height) != Int(editShowKeyBoardTop.currentSize.height))){
+                    
+                    editShowKeyBoardTop.scrollView?.contentSize = editShowKeyBoardTop.currentSize
+                }
                 
                 let height = Int(scrollView.contentSize.height)
                 
@@ -228,7 +251,9 @@ class DZMEditShowKeyBoardTop: NSObject {
                 editShowKeyBoardTop.scrollView = scrollView
                 
                 scrollView.contentSize = CGSizeMake(editShowKeyBoardTop.currentSize.width, editShowKeyBoardTop.currentSize.height + keyboardFrame.size.height - (UIScreen.mainScreen().bounds.size.height - DZMEditShowKeyBoardTop.getMaxYWithView(scrollView)))
+                
             }
+            
             
             UIView.animateWithDuration(keyboardAnimationDuration, animations: { () -> Void in
                 
@@ -245,6 +270,7 @@ class DZMEditShowKeyBoardTop: NSObject {
     键盘开始隐藏 的时候 退下去 （隐藏）则在键盘隐藏监听方法 里面调用即可
     
     - parameter notification: 键盘通知的notification
+    - parameter scrollView:   keyboardShowWithNotification方法中传进去的滚动控件
     */
     class func keyboardHideWithNotification(notification:NSNotification) {
         
@@ -257,7 +283,7 @@ class DZMEditShowKeyBoardTop: NSObject {
             editShowKeyBoardTop.scrollView?.contentSize = editShowKeyBoardTop.currentSize
             
             }) { (finished) -> Void in
-                editShowKeyBoardTop.scrollView = nil
+                
                 editShowKeyBoardTop.currentSize = CGSizeMake(0, 0)
         }
     }
