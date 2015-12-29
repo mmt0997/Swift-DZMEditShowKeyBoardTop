@@ -99,6 +99,7 @@ class DZMEditShowKeyBoardTop: NSObject {
     var scrollView:UIScrollView?
     var isThree:Bool = false                // 是否是第三方键盘
     var three:Int = 3                       // 第三方键盘需要调用willShow3次
+    var currentKeyboardFrame:CGRect!        // 当前界面frame
     
     // 方法名称
     let keyboardWillShowNotification:Selector = "keyboardWillShowNotification:"
@@ -201,7 +202,7 @@ class DZMEditShowKeyBoardTop: NSObject {
     - parameter 但是由于考虑这个MaxY说不定有些需要键盘与输入框中间有一点间距 可以通过单利取出 maxY + 间距值 就可以了
     */
     class func keyboardShowWithNotification(notification:NSNotification,scrollView:UIScrollView,maxY:CGFloat) {
-        
+        print("\(notification.userInfo)   \(notification.name)   \(notification.object)")
         let editShowKeyBoardTop:DZMEditShowKeyBoardTop = DZMEditShowKeyBoardTop.editShowKeyBoardTop
         
         let keyboardFrame:CGRect = (notification.userInfo![UIKeyboardFrameEndUserInfoKey]?.CGRectValue)!
@@ -232,26 +233,20 @@ class DZMEditShowKeyBoardTop: NSObject {
             
             if scrollView != editShowKeyBoardTop.scrollView || (scrollView == editShowKeyBoardTop.scrollView && Int(scrollView.contentSize.height) != Int(editShowKeyBoardTop.currentSize.height)) {
                 
-                if !((scrollView == editShowKeyBoardTop.scrollView && Int(scrollView.contentSize.height) != Int(editShowKeyBoardTop.currentSize.height))){
+                if (scrollView == editShowKeyBoardTop.scrollView && Int(scrollView.contentSize.height) != Int(editShowKeyBoardTop.currentSize.height)){
                     
                     editShowKeyBoardTop.scrollView?.contentSize = editShowKeyBoardTop.currentSize
                 }
                 
-                let height = Int(scrollView.contentSize.height)
-                
-                if height > 0 {
+                if editShowKeyBoardTop.currentKeyboardFrame != nil {
                     
-                    editShowKeyBoardTop.currentSize = scrollView.contentSize
-                    
-                }else{
-                    
-                    editShowKeyBoardTop.currentSize = CGSizeMake(scrollView.contentSize.width, scrollView.frame.size.height)
+                    if Int(editShowKeyBoardTop.currentKeyboardFrame.size.height) != 0 &&  Int(editShowKeyBoardTop.currentKeyboardFrame.size.height) != Int(keyboardFrame.size.height) {
+                        
+                        editShowKeyBoardTop.scrollView?.contentSize = editShowKeyBoardTop.currentSize
+                    }
                 }
                 
-                editShowKeyBoardTop.scrollView = scrollView
-                
-                scrollView.contentSize = CGSizeMake(editShowKeyBoardTop.currentSize.width, editShowKeyBoardTop.currentSize.height + keyboardFrame.size.height - (UIScreen.mainScreen().bounds.size.height - DZMEditShowKeyBoardTop.getMaxYWithView(scrollView)))
-                
+                editShowKeyBoardTop.setContentSize(scrollView, keyboardFrame: keyboardFrame)
             }
             
             
@@ -260,9 +255,29 @@ class DZMEditShowKeyBoardTop: NSObject {
                 scrollView.contentOffset = CGPointMake(0, scrollView.contentOffset.y + (maxY - keyboardY))
             })
             
+            editShowKeyBoardTop.currentKeyboardFrame = keyboardFrame
+            
         } // end if maxY > keyboardY
     }
     
+    // 设置
+    func setContentSize(scrollView:UIScrollView,keyboardFrame:CGRect) {
+        
+        let height = Int(scrollView.contentSize.height)
+        
+        if height > 0 {
+            
+            self.currentSize = scrollView.contentSize
+            
+        }else{
+            
+            self.currentSize = CGSizeMake(scrollView.contentSize.width, scrollView.frame.size.height)
+        }
+        
+        self.scrollView = scrollView
+        
+        scrollView.contentSize = CGSizeMake(self.currentSize.width, self.currentSize.height + keyboardFrame.size.height - (UIScreen.mainScreen().bounds.size.height - DZMEditShowKeyBoardTop.getMaxYWithView(scrollView)))
+    }
     
     // MARK: - 隐藏
     
