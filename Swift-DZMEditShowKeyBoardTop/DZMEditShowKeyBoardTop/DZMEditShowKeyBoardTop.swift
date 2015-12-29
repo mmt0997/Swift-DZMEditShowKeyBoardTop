@@ -99,7 +99,9 @@ class DZMEditShowKeyBoardTop: NSObject {
     var scrollView:UIScrollView?
     var isThree:Bool = false                // 是否是第三方键盘
     var three:Int = 3                       // 第三方键盘需要调用willShow3次
+    var threeAnimationDuration:Double = 0.1 // 第三方键盘情况移动动画时间
     var currentKeyboardFrame:CGRect!        // 当前界面frame
+    var inputView:UIView!
     
     // 方法名称
     let keyboardWillShowNotification:Selector = "keyboardWillShowNotification:"
@@ -181,7 +183,7 @@ class DZMEditShowKeyBoardTop: NSObject {
      
      - returns: 最大Y值
      */
-    private class func getMaxYWithView(view:UIView) ->CGFloat {
+    class func getMaxYWithView(view:UIView) ->CGFloat {
         
         let window:UIWindow = ((UIApplication.sharedApplication().delegate?.window)!)!
         let rect = view.convertRect(view.bounds, toView: window)
@@ -200,8 +202,9 @@ class DZMEditShowKeyBoardTop: NSObject {
     - parameter scrollView:   一个能滚动的view (scrollView,tableView,collectionView)
     - parameter maxY:         输入控件的最大Y值
     - parameter 但是由于考虑这个MaxY说不定有些需要键盘与输入框中间有一点间距 可以通过单利取出 maxY + 间距值 就可以了
+    return : 键盘高度 关键用于判断第三方键盘 != 0 就是键盘高度
     */
-    class func keyboardShowWithNotification(notification:NSNotification,scrollView:UIScrollView,maxY:CGFloat) {
+    class func keyboardShowWithNotification(notification:NSNotification,scrollView:UIScrollView,maxY:CGFloat) ->CGFloat {
         
         let editShowKeyBoardTop:DZMEditShowKeyBoardTop = DZMEditShowKeyBoardTop.editShowKeyBoardTop
         
@@ -218,14 +221,13 @@ class DZMEditShowKeyBoardTop: NSObject {
         if editShowKeyBoardTop.isThree {
             editShowKeyBoardTop.three += 1
             if editShowKeyBoardTop.three != 3 {
-                return
+                return 0
             }else{
                 editShowKeyBoardTop.isThree = false
             }
             
-            keyboardAnimationDuration = 0.25
+            keyboardAnimationDuration = editShowKeyBoardTop.threeAnimationDuration
         }
-        
         
         let keyboardY:CGFloat = keyboardFrame.origin.y
         
@@ -235,14 +237,20 @@ class DZMEditShowKeyBoardTop: NSObject {
                 
                 if (scrollView == editShowKeyBoardTop.scrollView && Int(scrollView.contentSize.height) != Int(editShowKeyBoardTop.currentSize.height)){
                     
-                    editShowKeyBoardTop.scrollView?.contentSize = editShowKeyBoardTop.currentSize
+                    if Int(editShowKeyBoardTop.currentSize.height) != 0{
+                        
+                        editShowKeyBoardTop.scrollView?.contentSize = editShowKeyBoardTop.currentSize
+                    }
                 }
                 
                 if editShowKeyBoardTop.currentKeyboardFrame != nil {
                     
                     if Int(editShowKeyBoardTop.currentKeyboardFrame.size.height) != 0 &&  Int(editShowKeyBoardTop.currentKeyboardFrame.size.height) != Int(keyboardFrame.size.height) {
                         
-                        editShowKeyBoardTop.scrollView?.contentSize = editShowKeyBoardTop.currentSize
+                        if Int(editShowKeyBoardTop.currentSize.height) != 0{
+                            
+                            editShowKeyBoardTop.scrollView?.contentSize = editShowKeyBoardTop.currentSize
+                        }
                     }
                 }
                 
@@ -258,6 +266,8 @@ class DZMEditShowKeyBoardTop: NSObject {
             editShowKeyBoardTop.currentKeyboardFrame = keyboardFrame
             
         } // end if maxY > keyboardY
+        
+        return keyboardFrame.size.height
     }
     
     // 设置
@@ -302,5 +312,57 @@ class DZMEditShowKeyBoardTop: NSObject {
                 editShowKeyBoardTop.currentSize = CGSizeMake(0, 0)
         }
     }
+    
+    
+    
+    // MARK: - 设置一个控件在键盘之上跟着走 建议用于聊天界面中的inputView类似的 以下方法不一定需要放在滚动空间中使用
+    
+    
+    /**
+    键盘显示完毕 后 输入框弹到键盘上边 （显示）则在键盘显示监听方法 里面调用即可  类似这种只帮显示 不帮隐藏 位子键盘退下位子自己实现 关键还是帮助适配了第三方键盘
+    
+    - parameter notification: 键盘通知的notification
+    - parameter inputView:   一个inputView
+    return : 键盘高度 关键用于判断第三方键盘 != 0 就是键盘高度
+    */
+    class func keyboardShowInputViewWithNotification(notification:NSNotification,inputView:UIView) -> CGFloat {
+        
+        let editShowKeyBoardTop:DZMEditShowKeyBoardTop = DZMEditShowKeyBoardTop.editShowKeyBoardTop
+        
+        let keyboardFrame:CGRect = (notification.userInfo![UIKeyboardFrameEndUserInfoKey]?.CGRectValue)!
+        
+        var keyboardAnimationDuration:Double = (notification.userInfo![UIKeyboardAnimationDurationUserInfoKey]?.doubleValue)!
+        
+        // 检测第三方键盘 假如 键盘高度
+        if Int(keyboardFrame.size.height) <= 0 {
+            editShowKeyBoardTop.three = 0
+            editShowKeyBoardTop.isThree = true
+        }
+        
+        if editShowKeyBoardTop.isThree {
+            editShowKeyBoardTop.three += 1
+            if editShowKeyBoardTop.three != 3 {
+                return 0
+            }else{
+                editShowKeyBoardTop.isThree = false
+            }
+            
+            keyboardAnimationDuration = editShowKeyBoardTop.threeAnimationDuration
+        }
+        
+        let maxY = DZMEditShowKeyBoardTop.getMaxYWithView(inputView)
+        
+        let keyboardY:CGFloat = keyboardFrame.origin.y
+        
+        
+        UIView.animateWithDuration(keyboardAnimationDuration, animations: { () -> Void in
+            
+            inputView.frame.origin = CGPointMake(0, inputView.frame.origin.y - (maxY - keyboardY))
+            
+        })
+        
+        return keyboardFrame.size.height
+    }
+    
     
 }
