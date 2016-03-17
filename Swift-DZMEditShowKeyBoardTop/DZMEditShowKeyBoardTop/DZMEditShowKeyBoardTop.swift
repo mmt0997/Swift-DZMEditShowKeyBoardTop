@@ -99,7 +99,8 @@ class DZMEditShowKeyBoardTop: NSObject {
     var scrollView:UIScrollView?
     var isThree:Bool = false                // 是否是第三方键盘
     var three:Int = 3                       // 第三方键盘需要调用willShow3次
-    var threeAnimationDuration:Double = 0.1 // 第三方键盘情况移动动画时间
+    var animationDuration:Double = 0.25     // 键盘的动画时间
+    var threeAnimationDuration:Double = 0.3 // 第三方键盘情况移动动画时间
     var currentKeyboardFrame:CGRect!        // 当前界面frame
     var inputView:UIView!
     
@@ -125,40 +126,79 @@ class DZMEditShowKeyBoardTop: NSObject {
     
     - parameter object: object
     */
-    class func addKeyBoardNotification(object:AnyObject){
+    class func addKeyBoardNotification(object:AnyObject?){
+        
+        if object != nil {
+            
+            let notificationCenter:NSNotificationCenter = NSNotificationCenter.defaultCenter();
+            
+            let editShowKeyBoardTop:DZMEditShowKeyBoardTop = DZMEditShowKeyBoardTop.editShowKeyBoardTop
+            
+            // 监听键盘开始显示
+            if object!.respondsToSelector(editShowKeyBoardTop.keyboardWillShowNotification){
+                notificationCenter.addObserver(object!, selector: editShowKeyBoardTop.keyboardWillShowNotification, name: UIKeyboardWillShowNotification, object: nil)
+            }
+            
+            // 监听键盘结束显示
+            if object!.respondsToSelector(editShowKeyBoardTop.keyboardDidShowNotification){
+                notificationCenter.addObserver(object!, selector: editShowKeyBoardTop.keyboardDidShowNotification, name: UIKeyboardDidShowNotification, object: nil)
+            }
+            
+            // 监听键盘开始隐藏
+            if object!.respondsToSelector(editShowKeyBoardTop.keyboardWillHideNotification){
+                notificationCenter.addObserver(object!, selector: editShowKeyBoardTop.keyboardWillHideNotification, name: UIKeyboardWillHideNotification, object: nil)
+            }
+            
+            // 监听键盘结束隐藏
+            if object!.respondsToSelector(editShowKeyBoardTop.keyboardDidHideNotification){
+                notificationCenter.addObserver(object!, selector: editShowKeyBoardTop.keyboardDidHideNotification, name: UIKeyboardDidHideNotification, object: nil)
+            }
+            
+            // 监听键盘改变frame
+            if object!.respondsToSelector(editShowKeyBoardTop.keyboardWillChangeFrameNotification){
+                if NSString(string: UIDevice.currentDevice().systemVersion).floatValue >= 5.0{
+                    notificationCenter.addObserver(object!, selector: editShowKeyBoardTop.keyboardWillChangeFrameNotification, name: UIKeyboardWillChangeFrameNotification, object: nil)
+                }
+            }
+        }
+    }
+    
+    /**
+     deinit 清理通知
+     */
+    class func removeKeyBoardNotification(object:AnyObject?) {
         
         let notificationCenter:NSNotificationCenter = NSNotificationCenter.defaultCenter();
         
         let editShowKeyBoardTop:DZMEditShowKeyBoardTop = DZMEditShowKeyBoardTop.editShowKeyBoardTop
         
-        // 监听键盘开始显示
-        if object.respondsToSelector(editShowKeyBoardTop.keyboardWillShowNotification){
-            notificationCenter.addObserver(object, selector: editShowKeyBoardTop.keyboardWillShowNotification, name: UIKeyboardWillShowNotification, object: nil)
+        // 移除监听键盘开始显示
+        if object!.respondsToSelector(editShowKeyBoardTop.keyboardWillShowNotification){
+            notificationCenter.removeObserver(object!, name: UIKeyboardWillShowNotification, object: nil)
         }
         
-        // 监听键盘结束显示
-        if object.respondsToSelector(editShowKeyBoardTop.keyboardDidShowNotification){
-            notificationCenter.addObserver(object, selector: editShowKeyBoardTop.keyboardDidShowNotification, name: UIKeyboardDidShowNotification, object: nil)
+        // 移除监听键盘结束显示
+        if object!.respondsToSelector(editShowKeyBoardTop.keyboardDidShowNotification){
+            notificationCenter.removeObserver(object!, name: UIKeyboardDidShowNotification, object: nil)
         }
         
-        // 监听键盘开始隐藏
-        if object.respondsToSelector(editShowKeyBoardTop.keyboardWillHideNotification){
-            notificationCenter.addObserver(object, selector: editShowKeyBoardTop.keyboardWillHideNotification, name: UIKeyboardWillHideNotification, object: nil)
+        // 移除监听键盘开始隐藏
+        if object!.respondsToSelector(editShowKeyBoardTop.keyboardWillHideNotification){
+            notificationCenter.removeObserver(object!, name: UIKeyboardWillHideNotification, object: nil)
         }
         
-        // 监听键盘结束隐藏
-        if object.respondsToSelector(editShowKeyBoardTop.keyboardDidHideNotification){
-            notificationCenter.addObserver(object, selector: editShowKeyBoardTop.keyboardDidHideNotification, name: UIKeyboardDidHideNotification, object: nil)
+        // 移除监听键盘结束隐藏
+        if object!.respondsToSelector(editShowKeyBoardTop.keyboardDidHideNotification){
+            notificationCenter.removeObserver(object!, name: UIKeyboardDidHideNotification, object: nil)
         }
         
-        // 监听键盘改变frame
-        if object.respondsToSelector(editShowKeyBoardTop.keyboardWillChangeFrameNotification){
-            
+        // 移除监听键盘改变frame
+        if object!.respondsToSelector(editShowKeyBoardTop.keyboardWillChangeFrameNotification){
             if NSString(string: UIDevice.currentDevice().systemVersion).floatValue >= 5.0{
-                
-                notificationCenter.addObserver(object, selector: editShowKeyBoardTop.keyboardWillChangeFrameNotification, name: UIKeyboardWillChangeFrameNotification, object: nil)
+                notificationCenter.removeObserver(object!, name: UIKeyboardWillChangeFrameNotification, object: nil)
             }
         }
+        
     }
     
     // MARK: - 获取位置得出最大Y值
@@ -204,13 +244,36 @@ class DZMEditShowKeyBoardTop: NSObject {
     - parameter 但是由于考虑这个MaxY说不定有些需要键盘与输入框中间有一点间距 可以通过单利取出 maxY + 间距值 就可以了
     return : 键盘高度 关键用于判断第三方键盘 != 0 就是键盘高度
     */
-    class func keyboardShowWithNotification(notification:NSNotification,scrollView:UIScrollView,maxY:CGFloat) ->CGFloat {
-        
-        let editShowKeyBoardTop:DZMEditShowKeyBoardTop = DZMEditShowKeyBoardTop.editShowKeyBoardTop
+    class func keyboardShow(notification:NSNotification,scrollView:UIScrollView,maxY:CGFloat) ->Int {
         
         let keyboardFrame:CGRect = (notification.userInfo![UIKeyboardFrameEndUserInfoKey]?.CGRectValue)!
         
-        var keyboardAnimationDuration:Double = (notification.userInfo![UIKeyboardAnimationDurationUserInfoKey]?.doubleValue)!
+        let duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey]
+        let keyboardAnimationDuration:Double = duration != nil ? duration!.doubleValue:DZMEditShowKeyBoardTop.editShowKeyBoardTop.animationDuration
+        
+        return DZMEditShowKeyBoardTop.keyboardShowEffect(keyboardFrame, keyboardAnimationDuration: keyboardAnimationDuration, scrollView: scrollView, maxY: maxY)
+    }
+    
+    // MARK: - 显示
+    
+    /**
+    键盘显示完毕 后 输入框弹到键盘上边 （显示）则在键盘显示监听方法 里面调用即可
+    maxY可以是任何View的maxY 可以将任何需要弹到键盘之上的View的MaxY
+    
+    - parameter keyboardFrame: 键盘的keyboardFrame
+    - parameter keyboardAnimationDuration: 动画时间
+    - parameter scrollView:   一个能滚动的view (scrollView,tableView,collectionView)
+    - parameter maxY:         输入控件的最大Y值
+    - parameter 但是由于考虑这个MaxY说不定有些需要键盘与输入框中间有一点间距 可以通过单利取出 maxY + 间距值 就可以了
+    return : 键盘高度 关键用于判断第三方键盘 != 0 就是键盘高度
+    */
+    class func keyboardShowEffect(keyboardFrame:CGRect,keyboardAnimationDuration:Double,scrollView:UIScrollView,maxY:CGFloat) ->Int {
+        
+        let editShowKeyBoardTop:DZMEditShowKeyBoardTop = DZMEditShowKeyBoardTop.editShowKeyBoardTop
+        
+        let keyboardFrame:CGRect = keyboardFrame
+        
+        var keyboardAnimationDuration:Double = keyboardAnimationDuration
         
         // 检测第三方键盘 假如 键盘高度
         if Int(keyboardFrame.size.height) <= 0 {
@@ -267,7 +330,7 @@ class DZMEditShowKeyBoardTop: NSObject {
             
         } // end if maxY > keyboardY
         
-        return keyboardFrame.size.height
+        return Int(keyboardFrame.size.height)
     }
     
     // 设置
@@ -297,11 +360,25 @@ class DZMEditShowKeyBoardTop: NSObject {
     - parameter notification: 键盘通知的notification
     - parameter scrollView:   keyboardShowWithNotification方法中传进去的滚动控件
     */
-    class func keyboardHideWithNotification(notification:NSNotification) {
+    class func keyboardHidde(notification:NSNotification) {
+        
+        let duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey]
+        let keyboardAnimationDuration:Double = duration != nil ? duration!.doubleValue:DZMEditShowKeyBoardTop.editShowKeyBoardTop.animationDuration
+        
+        DZMEditShowKeyBoardTop.keyboardHiddeEffect(keyboardAnimationDuration)
+    }
+    
+    /**
+     键盘开始隐藏 的时候 退下去 （隐藏）则在键盘隐藏监听方法 里面调用即可
+     
+     - parameter keyboardAnimationDuration: 隐藏的时间
+     - parameter scrollView:   keyboardShowWithNotification方法中传进去的滚动控件
+     */
+    class func keyboardHiddeEffect(keyboardAnimationDuration:Double) {
         
         let editShowKeyBoardTop:DZMEditShowKeyBoardTop = DZMEditShowKeyBoardTop.editShowKeyBoardTop
         
-        let keyboardAnimationDuration = (notification.userInfo![UIKeyboardAnimationDurationUserInfoKey]?.doubleValue)!
+        let keyboardAnimationDuration = keyboardAnimationDuration
         
         UIView.animateWithDuration(keyboardAnimationDuration, animations: { () -> Void in
             
@@ -323,7 +400,7 @@ class DZMEditShowKeyBoardTop: NSObject {
     
     - parameter notification: 键盘通知的notification
     - parameter inputView:   一个inputView
-    return : 键盘高度 关键用于判断第三方键盘 != 0 就是键盘高度
+    return: 键盘高度
     */
     class func keyboardShowInputViewWithNotification(notification:NSNotification,inputView:UIView) -> CGFloat {
         
@@ -331,7 +408,8 @@ class DZMEditShowKeyBoardTop: NSObject {
         
         let keyboardFrame:CGRect = (notification.userInfo![UIKeyboardFrameEndUserInfoKey]?.CGRectValue)!
         
-        var keyboardAnimationDuration:Double = (notification.userInfo![UIKeyboardAnimationDurationUserInfoKey]?.doubleValue)!
+        let duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey]
+        var keyboardAnimationDuration:Double = duration != nil ? duration!.doubleValue:DZMEditShowKeyBoardTop.editShowKeyBoardTop.animationDuration
         
         // 检测第三方键盘 假如 键盘高度
         if Int(keyboardFrame.size.height) <= 0 {
